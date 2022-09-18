@@ -1,5 +1,5 @@
 FROM klakegg/hugo:edge-ubuntu AS build
-RUN apk add -U git
+RUN apt install git
 COPY . /src
 RUN make init
 RUN make build
