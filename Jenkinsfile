@@ -20,7 +20,7 @@ pipeline {
     stage("Test") {
       when { changeRequest target: "master" }
       steps {
-        container("kustomize") {
+        container("kaniko") {
           sh """
             set +e
             kubectl create namespace $PROJECT-${env.BRANCH_NAME.toLowerCase()}
