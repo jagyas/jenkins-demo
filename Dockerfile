@@ -1,4 +1,5 @@
 FROM klakegg/hugo:edge-ubuntu AS build
+RUN apt update
 RUN apt install git
 COPY . /src
 RUN make init
