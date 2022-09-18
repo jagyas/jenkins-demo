@@ -1,6 +1,6 @@
 FROM klakegg/hugo:edge-ubuntu AS build
 RUN apt update
-RUN apt install git
+RUN apt install git -y
 COPY . /src
 RUN make init
 RUN make build
