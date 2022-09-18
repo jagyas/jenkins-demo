@@ -13,7 +13,10 @@ pipeline {
     stage("Build") {
       steps {
         container("kaniko") {
-          sh """/kaniko/executor --context `pwd` --destination jagyas/service:latest --destination ${REGISTRY_USER}/${PROJECT}:${env.BRANCH_NAME.toLowerCase()}-${BUILD_NUMBER} """
+          
+          script {
+    LATEST_TASK_DEFINITION = sh(returnStdout: true, script: "/kaniko/executor --context `pwd` --destination jagyas/service:latest --destination ${REGISTRY_USER}/${PROJECT}:${env.BRANCH_NAME.toLowerCase()}-${BUILD_NUMBER}").trim()
+ }
         }
       }
     }
